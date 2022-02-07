@@ -1,0 +1,18 @@
+
+#logoNavbar{
+    width: 10%;
+    margin-left: 1%;
+}
+
+#fondoNavbar{
+    background-image: radial-gradient( circle farthest-corner at 10% 20%,  #5a5c6a 0%, rgba(32,45,58,1) 81.3% );;
+}
+
+#buttonNav{
+    margin-right: 15%; 
+    padding: 2px;
+    color: #c7bfbf;
+    background-color: black;
+    font-weight: bold;
+    border: 1px black;
+}

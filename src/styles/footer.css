@@ -1,0 +1,14 @@
+footer{
+    align-items: center;
+    margin-top: 30%;
+    background-color: black;
+    height: 7rem;
+}
+
+.pFooter{
+    color: white;
+    justify-content: center;
+    padding-top: 2rem;
+}
+
+

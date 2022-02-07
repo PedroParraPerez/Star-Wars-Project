@@ -41,9 +41,7 @@ return(
 	
 		
 
-		<a href="#" className="btn btn-success">
-			If you see this green button, bootstrap is working
-		</a>
+		
 	</div>
 	</div>
 )};
