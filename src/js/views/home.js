@@ -11,7 +11,7 @@ return(
 	<div className="Container-fluid">
 	<div className="text-center mt-5">
 		<div className="img-header">
-			<img src="https://areajugones.sport.es/wp-content/uploads/2015/08/star-wars-mobile-game-header.jpg"/>
+			<img  className="imgHeader" src="https://media.discordapp.net/attachments/939128267607257158/940244671056211968/Ilustracion_sin_titulo.jpg" alt="StarWars"/>
 		</div>
 
 		<h1>Planetas</h1>
