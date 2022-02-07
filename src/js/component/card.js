@@ -7,7 +7,7 @@ const Card = (props) => {
         <img className="card-img-top" src="https://pictures.abebooks.com/isbn/9781838544652-es.jpg" alt="Card image cap"/>
         <div className="card-body">
               <h5 className="card-title">{props.title}</h5>
-              <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <p className="card-text">Aqui ira la descripcion del planeta o el persona {props.argument}</p>
               <a href="#" className="btn btn-primary">Go somewhere</a>
       </div>
   </div>
@@ -15,6 +15,7 @@ const Card = (props) => {
 };
 
 Card.propTypes = {
-    title: PropTypes.string
+    title: PropTypes.string,
+    argument: PropTypes.string
 }
 export default Card;
