@@ -18,11 +18,11 @@
   justify-content: center;
   align-items: center;
 }
-.bucketimg{
+.peoplebucketimg{
     display: flex;
     align-items: center;
 }
 
 .peopledescription{
-
+    align-items: center;
 }
