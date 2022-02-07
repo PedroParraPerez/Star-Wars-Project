@@ -30,7 +30,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 	
 				/**	fetch().then().then(data => setStore({ "foo": data.bar }))*/
 				
-// ----------------------------------- API DE LOS PLANETAS -----------------------------------	
+// ----------------------------------- DATA DE LOS PLANETAS -----------------------------------	
 			dataPlanets: () => {
 
 				fetch(
@@ -52,7 +52,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.error(errorplanets.message)
 				})
 			},
-// -----------------------API DE LOS PERSONAJES----------------------------------------
+// -----------------------DATA DE LOS PERSONAJES----------------------------------------
 			dataPeople: () => {
 				fetch(
 					"https://www.swapi.tech/api/people/"
@@ -72,7 +72,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.error(errorpeople.message)
 				})
 			},
-// ---------------------------------------API  DE LAS NAVES ---------------------------------------------------
+// ---------------------------------------DATA  DE LAS NAVES ---------------------------------------------------
 
 			dataStarships: () => {
 				fetch(
