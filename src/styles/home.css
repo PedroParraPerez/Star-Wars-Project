@@ -1,0 +1,12 @@
+.card{
+    margin-top: 2rem;
+    width: 50%;
+}
+.cardlistpeople{
+    display: flex;
+    justify-content: center;
+    
+}
+div{
+    border: 2pt solid red
+}

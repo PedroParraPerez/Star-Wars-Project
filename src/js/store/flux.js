@@ -12,7 +12,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 					background: "white",
 					initial: "white"
 				}
-			]
+			],
+			planets:[],
+			planetshome:[]
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -23,7 +25,26 @@ const getState = ({ getStore, getActions, setStore }) => {
 				/**
 					fetch().then().then(data => setStore({ "foo": data.bar }))
 				*/
+				fetch(
+					"https://www.swapi.tech/api/planets/"
+				).then(response => {
+					console.log("aqui esta response", response)
+					if(response.ok){
+						return response.json()
+					}
+					throw new Error ("Fail loading planets")
+				}).then(
+					responseAsjson => {
+						console.log("aqui esta responseAsjson", responseAsjson)
+						setStore({planets:responseAsjson.results})
+						setStore({planetshome:responseAsjson.results.filter((e) => e.uid < 5)})
+					}
+				).catch(errorplanets=>{
+					console.error(errorplanets.message)
+				})
 			},
+			
+
 			changeColor: (index, color) => {
 				//get the store
 				const store = getStore();
