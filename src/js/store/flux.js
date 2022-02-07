@@ -14,7 +14,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			],
 			planets:[],
-			planetshome:[]
+			planetshome:[],
+			people:[],
+			peoplehome:[],
+			starships:[],
+			starshipshome:[]
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -25,22 +29,61 @@ const getState = ({ getStore, getActions, setStore }) => {
 				/**
 					fetch().then().then(data => setStore({ "foo": data.bar }))
 				*/
+// ----------------------------------- API DE LOS PLANETAS -----------------------------------			
 				fetch(
 					"https://www.swapi.tech/api/planets/"
 				).then(response => {
-					console.log("aqui esta response", response)
+					console.log("aqui esta response de planets", response)
 					if(response.ok){
 						return response.json()
 					}
 					throw new Error ("Fail loading planets")
 				}).then(
 					responseAsjson => {
-						console.log("aqui esta responseAsjson", responseAsjson)
+						console.log("aqui esta responseAsjson de planets", responseAsjson)
 						setStore({planets:responseAsjson.results})
 						setStore({planetshome:responseAsjson.results.filter((e) => e.uid < 5)})
 					}
-				).catch(errorplanets=>{
+				).catch(errorplanets => {
 					console.error(errorplanets.message)
+				})
+
+// -----------------------API DE LOS PERSONAJES----------------------------------------
+
+				fetch(
+					"https://www.swapi.tech/api/people/"
+				).then(response => {
+					console.log("aqui esta response de people", response)
+					if(response.ok){
+						return response.json()
+					}
+					throw new Error ("Fail loading people")
+				}).then(
+					responseAsjson => {
+						console.log("aqui esta responseAsjson de people", responseAsjson)
+						setStore({people:responseAsjson.results})
+						setStore({peoplehome:responseAsjson.results.filter((e) => e.uid < 5)})
+					}
+				).catch(errorpeople=>{
+					console.error(errorpeople.message)
+				})
+// ---------------------------------------API  DE LAS NAVES ---------------------------------------------------
+				fetch(
+					"https://www.swapi.tech/api/starships/"
+				).then(response => {
+					console.log("aqui esta response de starships", response)
+					if(response.ok){
+						return response.json()
+					}
+					throw new Error ("Fail loading starships")
+				}).then(
+					responseAsjson => {
+						console.log("aqui esta responseAsjson de starships", responseAsjson)
+						setStore({starships:responseAsjson.results})
+						setStore({starshipshome:responseAsjson.results.filter((e) => e.uid < 10)})
+					}
+				).catch(errorstarships => {
+					console.error(errorstarships.message)
 				})
 			},
 			
