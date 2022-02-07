@@ -25,14 +25,18 @@ const getState = ({ getStore, getActions, setStore }) => {
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
 			},
-			loadSomeData: () => {
-				/**
-					fetch().then().then(data => setStore({ "foo": data.bar }))
-				*/
-// ----------------------------------- API DE LOS PLANETAS -----------------------------------			
+
+
+	
+				/**	fetch().then().then(data => setStore({ "foo": data.bar }))*/
+				
+// ----------------------------------- API DE LOS PLANETAS -----------------------------------	
+			dataPlanets: () => {
+
 				fetch(
 					"https://www.swapi.tech/api/planets/"
-				).then(response => {
+					//  process.env.DATAPLANETS
+					).then(response => {
 					console.log("aqui esta response de planets", response)
 					if(response.ok){
 						return response.json()
@@ -47,9 +51,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 				).catch(errorplanets => {
 					console.error(errorplanets.message)
 				})
-
+			},
 // -----------------------API DE LOS PERSONAJES----------------------------------------
-
+			dataPeople: () => {
 				fetch(
 					"https://www.swapi.tech/api/people/"
 				).then(response => {
@@ -67,7 +71,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 				).catch(errorpeople=>{
 					console.error(errorpeople.message)
 				})
+			},
 // ---------------------------------------API  DE LAS NAVES ---------------------------------------------------
+
+			dataStarships: () => {
 				fetch(
 					"https://www.swapi.tech/api/starships/"
 				).then(response => {
