@@ -32,10 +32,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 				
 // ----------------------------------- DATA DE LOS PLANETAS -----------------------------------	
 			dataPlanets: () => {
+				
+			
 
 				fetch(
 					"https://www.swapi.tech/api/planets/"
-					//  process.env.DATAPLANETS
 					).then(response => {
 					console.log("aqui esta response de planets", response)
 					if(response.ok){
