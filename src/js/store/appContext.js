@@ -23,7 +23,9 @@ const injectContext = PassedComponent => {
 
 		useEffect(() => {
 				// Esto cargará cada vez que se inicia la pagina, por eso ponemos la llamada de la API en el useEffect.
-			state.actions.loadSomeData();
+			state.actions.dataPlanets();
+			state.actions.dataPeople();
+			state.actions.dataStarships();
 			/**
 			 * EDIT THIS!
 			 * This function is the equivalent to "window.onLoad", it only runs once on the entire application lifetime
