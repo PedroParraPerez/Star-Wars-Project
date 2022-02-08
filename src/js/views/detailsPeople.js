@@ -5,7 +5,7 @@ import { Context } from "../store/appContext";
 
  export const DetailsPeople = () => {
 
-const {store,actions} = useContext(Context)
+const {store,actions} = useContext(Context);
 const params = useParams();
 
     useEffect( ()=> {
