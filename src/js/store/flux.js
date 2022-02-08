@@ -93,7 +93,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.error(errorstarships.message)
 				})
 			},
-			getPeopleById: (id) => {
+			getPlanetsById: (id) => {
 					fetch()
 			},
 
