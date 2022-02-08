@@ -1,10 +1,16 @@
 import React, { useState, useEffect, useContext } from "react";
-
+import { useParams } from "react-router";
 import "../../styles/detailsPeople.css"
-
+import { Context } from "../store/appContext";
 
  export const DetailsPeople = () => {
 
+const {store,actions} = useContext(Context)
+const params = useParams();
+
+    useEffect( ()=> {
+        actions.getPeopleById(params.peopleId)
+    },[]) 
 
 return(
 

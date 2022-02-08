@@ -5,6 +5,10 @@
 }
 
 #fondoNavbar{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 3;
     background-image: radial-gradient( circle farthest-corner at 10% 20%,  #5a5c6a 0%, rgba(32,45,58,1) 81.3% );;
 }
 

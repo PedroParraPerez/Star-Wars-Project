@@ -93,7 +93,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.error(errorstarships.message)
 				})
 			},
-			
+			getPeopleById: (id) => {
+					fetch()
+			},
 
 			changeColor: (index, color) => {
 				//get the store
