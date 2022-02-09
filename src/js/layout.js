@@ -10,9 +10,9 @@ import injectContext from "./store/appContext";
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 
-import {DetailsPeople} from "./views/detailsPeople";
-import { DetailsPlanets } from "./views/detailsPlanets";
-import {DetailsStarships} from "./views/detailsStarships";
+import {DetailsPeople} from "./views/detailsPeople.jsx";
+import { DetailsPlanets } from "./views/detailsPlanets.jsx";
+import {DetailsStarships} from "./views/detailsStarships.jsx";
 
 //create your first component
 const Layout = () => {

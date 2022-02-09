@@ -1,9 +1,13 @@
 import React, { useState, useEffect, useContext } from "react";
-import { useParams } from "react-router";
+import { useParams } from "react-router-dom";
 import "../../styles/detailsPlanets.css"
 import { Context } from "../store/appContext";
 
  export const DetailsPlanets = () => {
+
+
+// ----------------------------------- DATA DE LOS PLANETAS -----------------------------------	
+
 
 const {store,actions} = useContext(Context)
 const params = useParams();
