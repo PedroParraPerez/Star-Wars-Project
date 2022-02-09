@@ -18,7 +18,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			people:[],
 			peoplehome:[],
 			starships:[],
-			starshipshome:[]
+			starshipshome:[],
+			starshipsDetails:[]
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -37,14 +38,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 					"https://www.swapi.tech/api/planets/"
 					//  process.env.DATAPLANETS
 					).then(response => {
-					console.log("aqui esta response de planets", response)
+					// console.log("aqui esta response de planets", response)
 					if(response.ok){
 						return response.json()
 					}
 					throw new Error ("Fail loading planets")
 				}).then(
 					responseAsjson => {
-						console.log("aqui esta responseAsjson de planets", responseAsjson)
+						// console.log("aqui esta responseAsjson de planets", responseAsjson)
 						setStore({planets:responseAsjson.results})
 						setStore({planetshome:responseAsjson.results.filter((e) => e.uid < 5)})
 					}
@@ -57,14 +58,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 				fetch(
 					"https://www.swapi.tech/api/people/"
 				).then(response => {
-					console.log("aqui esta response de people", response)
+					// console.log("aqui esta response de people", response)
 					if(response.ok){
 						return response.json()
 					}
 					throw new Error ("Fail loading people")
 				}).then(
 					responseAsjson => {
-						console.log("aqui esta responseAsjson de people", responseAsjson)
+						// console.log("aqui esta responseAsjson de people", responseAsjson)
 						setStore({people:responseAsjson.results})
 						setStore({peoplehome:responseAsjson.results.filter((e) => e.uid < 5)})
 					}
@@ -78,14 +79,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 				fetch(
 					"https://www.swapi.tech/api/starships/"
 				).then(response => {
-					console.log("aqui esta response de starships", response)
+					// console.log("aqui esta response de starships", response)
 					if(response.ok){
 						return response.json()
 					}
 					throw new Error ("Fail loading starships")
 				}).then(
 					responseAsjson => {
-						console.log("aqui esta responseAsjson de starships", responseAsjson)
+						// console.log("aqui esta responseAsjson de starships", responseAsjson)
 						setStore({starships:responseAsjson.results})
 						setStore({starshipshome:responseAsjson.results.filter((e) => e.uid < 10)})
 					}
@@ -93,8 +94,21 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.error(errorstarships.message)
 				})
 			},
-			getPeopleById: (id) => {
-					fetch()
+			getStarshipsById: (id) => {
+				
+					fetch("https://www.swapi.tech/api/starships/"+id
+					).then(response=>{
+						if(response.ok){
+							return response.json()
+						}
+						throw new Error ("Fail loading starships")
+					}).then(responseAsjson=>{
+						console.log("aqui esta getby ide starships", responseAsjson.result.properties)
+						setStore({starshipsDetails:[responseAsjson.result.properties]})
+						console.log("details enflux",getStore().starshipsDetails)
+					}).catch(errorStarshipsDetails=>{
+						console.error (errorStarshipsDetails.message)
+					})
 			},
 
 			changeColor: (index, color) => {

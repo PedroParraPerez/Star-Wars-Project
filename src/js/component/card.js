@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 const Card = (props) => {
 	return (
@@ -9,6 +10,7 @@ const Card = (props) => {
               <h5 className="card-title">{props.title}</h5>
               <p className="card-text">Aqui ira la descripcion del planeta o el persona {props.argument}</p>
               <a href="#" className="btn btn-primary">Go somewhere</a>
+              
       </div>
   </div>
 	);
