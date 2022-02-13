@@ -18,7 +18,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			people:[],
 			peoplehome:[],
 			starships:[],
-			starshipshome:[]
+			starshipshome:[],
+			peopledetails:[]
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -96,20 +97,20 @@ const getState = ({ getStore, getActions, setStore }) => {
 //----------------------------------------GET PEOPLE BY UID------------------------------------------------------
 			getPeopleById: (uid) => {
 				fetch(
-					`https://www.swapi.tech/api/people/${uid}`
+					`https://www.swapi.tech/api/people/`+uid
 				).then(response => {
 					console.log("aqui esta response de getPeopleByUid", response)
 					if(response.ok){
 						return response.json()
 					}
 					throw new Error ("Fail loading getPeopleByUid")
-				}).then(
-					responseAsjson => {
-						console.log("aqui esta responseAsjson de getPeopleByUid", responseAsjson)
-						setStore({getPeopleByUid:responseAsjson.results})
-					}
+				}).then(responseAsjson=>{
+					console.log("aqui esta getby ide people", responseAsjson.result.properties)
+					setStore({peopledetails:[responseAsjson.result.properties]})
+					console.log("details enflux",getStore().peopledetails)
+				}
 				).catch(errorgetPeopleByUid => {
-					console.error(errorgetPeopleByUid.message)
+					console.error(errorpeopledetails.message)
 				})
 			},
 

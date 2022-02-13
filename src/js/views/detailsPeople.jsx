@@ -6,30 +6,34 @@ import { Context } from "../store/appContext";
  export const DetailsPeople = () => {
 
 const {store,actions} = useContext(Context);
-const params = useParams();
+let params = useParams();
 
     useEffect( ()=> {
-        actions.getPeopleById(params.peopleId)
+        actions.getPeopleById(params.uid)
     },[]) 
 
 return(
 
         <div className="Container-fluid">
-            <div className="row">
+            {store.peopledetails.map((detail,index) =>{
+                return ( 
+            <div className="row" key={index}>
                 <div className="col-xl-12 wrappeople">
-                    <dic className="col-xl-7 peoplebucketimg">
+                    <div className="col-xl-7 peoplebucketimg">
                         <img className="peoplephoto" src="https://pictures.abebooks.com/isbn/9781838544652-es.jpg"/>
-                    </dic>
+                    </div>
                     <div className="col-xl-5 peopledescription">
                         <ul>
-                            <li>Nombre:{name}</li>
-                            <li>Altura:</li>
-                            <li>Peso:</li>
-                            <li>Descripción:</li>
+                            <li>Nombre: {detail.name}</li>
+                            <li>Altura: {detail.height}</li>
+                            <li>Peso: {detail.mass}</li>
+                            <li>Año de nacimiento: {detail.birth_year}</li>
                         </ul>
                     </div>
                 </div>
-            </div>
+                </div> 
+                )
+            })}
         </div>
      );
 

@@ -11,8 +11,7 @@ import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 
 import {DetailsPeople} from "./views/detailsPeople.jsx";
-import { DetailsPlanets } from "./views/detailsPlanets.jsx";
-import {DetailsStarships} from "./views/detailsStarships.jsx";
+
 
 //create your first component
 const Layout = () => {
@@ -35,14 +34,8 @@ const Layout = () => {
 						<Route exact path="/single/:theid">
 							<Single />
 						</Route>
-						<Route exact path ="/detailspeople/">  {/*:peopleId*/}
+						<Route exact path ="/detailspeople/:uid">  
 							<DetailsPeople />
-						</Route>
-						<Route exact path ="/detailsplanets">
-							<DetailsPlanets />
-						</Route>
-						<Route exact path ="/detailsstarships">
-							<DetailsStarships />
 						</Route>
 						<Route>
 							<h1>Not found!</h1>
