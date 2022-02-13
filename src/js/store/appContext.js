@@ -26,6 +26,7 @@ const injectContext = PassedComponent => {
 			state.actions.dataPlanets();
 			state.actions.dataPeople();
 			state.actions.dataStarships();
+			state.actions.getPeopleById();
 			/**
 			 * EDIT THIS!
 			 * This function is the equivalent to "window.onLoad", it only runs once on the entire application lifetime

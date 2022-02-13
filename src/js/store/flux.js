@@ -26,8 +26,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 				getActions().changeColor(0, "green");
 			},
 
-
-	
 				/**	fetch().then().then(data => setStore({ "foo": data.bar }))*/
 				
 // ----------------------------------- DATA DE LOS PLANETAS -----------------------------------	
@@ -94,9 +92,28 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.error(errorstarships.message)
 				})
 			},
-			getPeopleById: (id) => {
-					fetch()
+
+//----------------------------------------GET PEOPLE BY UID------------------------------------------------------
+			getPeopleById: (uid) => {
+				fetch(
+					`https://www.swapi.tech/api/people/${uid}`
+				).then(response => {
+					console.log("aqui esta response de getPeopleByUid", response)
+					if(response.ok){
+						return response.json()
+					}
+					throw new Error ("Fail loading getPeopleByUid")
+				}).then(
+					responseAsjson => {
+						console.log("aqui esta responseAsjson de getPeopleByUid", responseAsjson)
+						setStore({getPeopleByUid:responseAsjson.results})
+					}
+				).catch(errorgetPeopleByUid => {
+					console.error(errorgetPeopleByUid.message)
+				})
 			},
+
+
 
 			changeColor: (index, color) => {
 				//get the store

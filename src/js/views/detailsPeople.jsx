@@ -22,7 +22,7 @@ return(
                     </dic>
                     <div className="col-xl-5 peopledescription">
                         <ul>
-                            <li>Nombre:</li>
+                            <li>Nombre:{name}</li>
                             <li>Altura:</li>
                             <li>Peso:</li>
                             <li>Descripción:</li>
