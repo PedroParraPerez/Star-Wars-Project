@@ -1,8 +1,9 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import "../../styles/home.css";
 import Card from "../component/card.js"
 import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
+import getState from "../store/flux.js";
 
 export const Home = () => {
 
@@ -19,7 +20,12 @@ return(
 			<div className="row cardlistpeople">
 				{store.peoplehome.map((people, index)=> {
 					return(
-						<div className="col-md-3 d-flex justify-content-center" key={index}><Card title={people.name}/></div>	
+						<div className="col-md-3 d-flex justify-content-center" key={index}>
+							<Card 
+							title={people.name} 
+							uid={people.uid}
+							typecard={people}/>
+						</div>	
 					)
 				})}
 			</div>
@@ -28,7 +34,9 @@ return(
 			<div className="row cardlistpeople">
 				{store.planetshome.map((planet, index)=> {
 					return(
-						<div className="col-md-3 d-flex justify-content-center" key={index}><Card title={planet.name}/></div>	
+						<div className="col-md-3 d-flex justify-content-center" key={index}>
+							<Card title={planet.name}/>
+						</div>	
 					)
 				})}
 			</div>

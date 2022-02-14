@@ -6,9 +6,11 @@ import { Context } from "../store/appContext";
  export const DetailsPeople = () => {
 
 const {store,actions} = useContext(Context);
+
 let params = useParams();
 
     useEffect( ()=> {
+        console.log(`aqui estamos weyy ${params.uid}`);
         actions.getPeopleById(params.uid)
     },[]) 
 
