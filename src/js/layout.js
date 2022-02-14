@@ -41,7 +41,7 @@ const Layout = () => {
 						<Route exact path ="/detailsplanets">
 							<DetailsPlanets />
 						</Route> */}
-						<Route exact path ="/detailsstarships/:id">
+						<Route exact path ="/detailsStarships/:uid">
 							<DetailsStarships />
 						</Route>
 						<Route>

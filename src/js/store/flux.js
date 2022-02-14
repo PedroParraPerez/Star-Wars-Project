@@ -94,9 +94,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.error(errorstarships.message)
 				})
 			},
-			getStarshipsById: (id) => {
+			getStarshipsById: (uid) => {
 				
-					fetch("https://www.swapi.tech/api/starships/"+id
+					fetch("https://www.swapi.tech/api/starships/"+uid
 					).then(response=>{
 						if(response.ok){
 							return response.json()
@@ -111,20 +111,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 			},
 
-			changeColor: (index, color) => {
-				//get the store
-				const store = getStore();
-
-				//we have to loop the entire demo array to look for the respective index
-				//and change its color
-				const demo = store.demo.map((elm, i) => {
-					if (i === index) elm.background = color;
-					return elm;
-				});
-
-				//reset the global store
-				setStore({ demo: demo });
-			}
 		}
 	};
 };
