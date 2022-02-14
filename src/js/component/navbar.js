@@ -9,7 +9,7 @@ export const Navbar = () => {
 					<img className="navbar-brand mb-0 h1" src="https://www.seekpng.com/png/full/10-105590_star-wars-logo-png-star-wars-png.png" alt="logo Star Wars Blog" id="logoNavbar"/>
 			</Link>
 			<div className="ml-auto">
-				<Link to="/demo">
+				<Link to="">
 					<button className="btn btn-primary" id="buttonNav">Mis Favoritos</button>
 				</Link>
 			</div>

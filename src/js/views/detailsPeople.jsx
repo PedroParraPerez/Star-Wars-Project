@@ -12,7 +12,7 @@ let params = useParams();
     useEffect( ()=> {
         console.log(`aqui estamos weyy ${params.uid}`);
         actions.getPeopleById(params.uid)
-    },[]) 
+    },[])
 
 return(
 
