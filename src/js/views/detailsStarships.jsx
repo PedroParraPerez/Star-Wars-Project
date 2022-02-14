@@ -32,10 +32,10 @@ return(
                     </div>
                     <div className="col-xl-5 Starshipsdescription">
                         <ul>
-                            <li>Tipo de Nave:{detail.starship_class}</li>
-                            <li>Modelo de Nave:{detail.model}</li>
-                            <li>Manufactura:{detail.manufacturer}</li>
-                            <li>Costo en créditos:{detail.cost_in_credits}</li>
+                            <li>Tipo de nave: {detail.starship_class}</li>
+                            <li>Modelo de nave: {detail.model}</li>
+                            <li>Manufactura: {detail.manufacturer}</li>
+                            <li>Costo en créditos: {detail.cost_in_credits}</li>
                     
                         </ul>
                     </div>
