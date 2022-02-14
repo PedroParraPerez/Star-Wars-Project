@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import "../../styles/home.css";
-import Card from "../component/card.js"
+import CardPlanets from "../component/cardPlanets.js"
 import { Context } from "../store/appContext";
 
 export const Home = () => {
@@ -16,31 +16,12 @@ return(
 
 		<h1>Planetas</h1>
 		<div className="row cardlistpeople">
-			{store.planetshome.map((planet, index)=> {
+			{store.planetshome.map((planets, index)=> {
 				return(
-					<div className="col-md-3 d-flex justify-content-center" key={index}><Card title={planet.name}/></div>	
+					<div className="col-md-3 d-flex justify-content-center" key={index}><CardPlanets uid={planets.uid} title={planets.name}/></div>	
 				)
 			})}
 		</div>
-		<h1>Personajes</h1>
-		<div className="row cardlistpeople">
-			{store.peoplehome.map((people, index)=> {
-				return(
-					<div className="col-md-3 d-flex justify-content-center" key={index}><Card title={people.name}/></div>	
-				)
-			})}
-		</div>
-		<h1>Naves</h1>
-		<div className="row cardlistpeople">
-			{store.starshipshome.map((starships, index)=> {
-				return(
-					<div className="col-md-3 d-flex justify-content-center" key={index}><Card title={starships.name}/></div>	
-				)
-			})}
-		</div>
-	
-		
-
 		
 	</div>
 	</div>

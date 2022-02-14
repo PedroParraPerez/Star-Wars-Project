@@ -18,7 +18,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			people:[],
 			peoplehome:[],
 			starships:[],
-			starshipshome:[]
+			starshipshome:[],
+			planetdetails:[]
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -93,26 +94,30 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.error(errorstarships.message)
 				})
 			},
-			getPlanetsById: (id) => {
-					fetch()
+		
+
+			getPlanetsById: (uid) => {
+				fetch(
+					`https://www.swapi.tech/api/planets/`.concat(uid)
+				).then(response => {
+					console.log("aqui esta response de getPlanetsByuid", response)
+					if(response.ok){
+						return response.json()
+					}
+					throw new Error ("Fail loading getPlanetByuid")
+				}).then(responseAsjson=>{
+					console.log("aqui esta getby ide planets", responseAsjson.result.properties)
+					setStore({planetdetails:[responseAsjson.result.properties]})
+					console.log("details enflux",getStore().planetdetails)
+				}
+				).catch(errorGetPlanetById => {
+					console.error(errorGetPlanetById.message)
+				})
 			},
 
-			changeColor: (index, color) => {
-				//get the store
-				const store = getStore();
-
-				//we have to loop the entire demo array to look for the respective index
-				//and change its color
-				const demo = store.demo.map((elm, i) => {
-					if (i === index) elm.background = color;
-					return elm;
-				});
-
-				//reset the global store
-				setStore({ demo: demo });
-			}
 		}
 	};
 };
 
 export default getState;
+
