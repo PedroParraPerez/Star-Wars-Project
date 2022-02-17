@@ -1,4 +1,5 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import PropTypes from "prop-types";
 import "../../styles/home.css";
 import CardPeople from "../component/cardPeople.js"
 import { Context } from "../store/appContext";
@@ -7,6 +8,21 @@ import { Context } from "../store/appContext";
 export const Home = () => {
 
 	const {store,actions} = useContext(Context);
+	const [isFav, setIsFav] = useState(false);
+	const [listFav, setListFav] = ([]);
+
+	 const favorites = (uid) => {
+		isFav == false ? setIsFav(true) : setIsFav(false);
+		console.log(isFav)
+		
+	 }
+
+	const addToFav = () => {
+		setListFav
+	}
+	 
+		
+
 
 return(
 	<div className="Container-fluid">
@@ -23,6 +39,7 @@ return(
 							<CardPeople 
 							title={people.name} 
 							uid={people.uid}
+							fav={()=>{favorites()}}
 							/>
 						</div>	
 					)
