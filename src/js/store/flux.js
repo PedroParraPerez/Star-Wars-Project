@@ -1,38 +1,29 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			demo: [
-				{
-					title: "FIRST",
-					background: "white",
-					initial: "white"
-				},
-				{
-					title: "SECOND",
-					background: "white",
-					initial: "white"
-				}
-			],
+
 			planets:[],
 			planetshome:[],
 			people:[],
 			peoplehome:[],
 			starships:[],
-			starshipshome:[]
+			starshipshome:[],
+			peopledetails:[]
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
-			exampleFunction: () => {
-				getActions().changeColor(0, "green");
-			},
-			loadSomeData: () => {
-				/**
-					fetch().then().then(data => setStore({ "foo": data.bar }))
-				*/
-// ----------------------------------- API DE LOS PLANETAS -----------------------------------			
+		
+
+				/**	fetch().then().then(data => setStore({ "foo": data.bar }))*/
+				
+// ----------------------------------- DATA DE LOS PLANETAS -----------------------------------	
+			dataPlanets: () => {
+				
+			
+
 				fetch(
 					"https://www.swapi.tech/api/planets/"
-				).then(response => {
+					).then(response => {
 					console.log("aqui esta response de planets", response)
 					if(response.ok){
 						return response.json()
@@ -47,9 +38,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 				).catch(errorplanets => {
 					console.error(errorplanets.message)
 				})
-
-// -----------------------API DE LOS PERSONAJES----------------------------------------
-
+			},
+// -----------------------DATA DE LOS PERSONAJES----------------------------------------
+			dataPeople: () => {
 				fetch(
 					"https://www.swapi.tech/api/people/"
 				).then(response => {
@@ -67,7 +58,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 				).catch(errorpeople=>{
 					console.error(errorpeople.message)
 				})
-// ---------------------------------------API  DE LAS NAVES ---------------------------------------------------
+			},
+// ---------------------------------------DATA  DE LAS NAVES ---------------------------------------------------
+
+			dataStarships: () => {
 				fetch(
 					"https://www.swapi.tech/api/starships/"
 				).then(response => {
@@ -86,24 +80,34 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.error(errorstarships.message)
 				})
 			},
+
+//----------------------------------------GET PEOPLE BY UID------------------------------------------------------
+			getPeopleById: (uid) => {
+				fetch(
+					`https://www.swapi.tech/api/people/`.concat(uid)
+				).then(response => {
+					console.log("aqui esta response de getPeopleByUid", response)
+					if(response.ok){
+						return response.json()
+					}
+					throw new Error ("Fail loading getPeopleByUid")
+				}).then(responseAsjson=>{
+					console.log("aqui esta getby ide people", responseAsjson.result.properties)
+					setStore({peopledetails:[responseAsjson.result.properties]})
+					console.log("details enflux",getStore().peopledetails)
+				}
+				).catch(errorGetPeopleById => {
+					console.error(errorGetPeopleById.message)
+				})
+			},
+
+
+
 			
-
-			changeColor: (index, color) => {
-				//get the store
-				const store = getStore();
-
-				//we have to loop the entire demo array to look for the respective index
-				//and change its color
-				const demo = store.demo.map((elm, i) => {
-					if (i === index) elm.background = color;
-					return elm;
-				});
-
-				//reset the global store
-				setStore({ demo: demo });
-			}
 		}
-	};
+		};
 };
+
+
 
 export default getState;
