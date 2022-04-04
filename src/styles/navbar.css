@@ -32,3 +32,10 @@
  margin-top: 5rem;
     color: white;
 }
+
+.dropdown{
+    margin-right: 3rem;
+}
+.favsnavbar:hover{
+    cursor: pointer;
+}
