@@ -9,8 +9,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 			starships:[],
 			starshipshome:[],
 			planetdetails:[],
-      peopledetails:[],
-			starshipsDetails:[]
+      		peopledetails:[],
+			starshipsDetails:[],
+			favlist:[],
 
 		},
 
@@ -24,21 +25,24 @@ const getState = ({ getStore, getActions, setStore }) => {
 		actions: {
 
 				/**	fetch().then().then(data => setStore({ "foo": data.bar }))*/
-				
+			favorites: (name) => {
+					//  setStore({ ...getStore().favlist, favlist: name })
+					 setStore({ favlist: [name] })
+					 console.log(getStore().favlist)
+					
+				},
 // ----------------------------------- DATA DE LOS PLANETAS -----------------------------------	
 			dataPlanets: () => {
 
 				fetch(
 					"https://www.swapi.tech/api/planets/"
 					).then(response => {
-					console.log("aqui esta response de planets", response)
 					if(response.ok){
 						return response.json()
 					}
 					throw new Error ("Fail loading planets")
 				}).then(
 					responseAsjson => {
-						// console.log("aqui esta responseAsjson de planets", responseAsjson)
 						setStore({planets:responseAsjson.results})
 						setStore({planetshome:responseAsjson.results.filter((e) => e.uid < 5)})
 					}
@@ -51,14 +55,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 				fetch(
 					"https://www.swapi.tech/api/people/"
 				).then(response => {
-					// console.log("aqui esta response de people", response)
 					if(response.ok){
 						return response.json()
 					}
 					throw new Error ("Fail loading people")
 				}).then(
 					responseAsjson => {
-						// console.log("aqui esta responseAsjson de people", responseAsjson)
 						setStore({people:responseAsjson.results})
 						setStore({peoplehome:responseAsjson.results.filter((e) => e.uid < 5)})
 					}
@@ -72,14 +74,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 				fetch(
 					"https://www.swapi.tech/api/starships/"
 				).then(response => {
-					// console.log("aqui esta response de starships", response)
 					if(response.ok){
 						return response.json()
 					}
 					throw new Error ("Fail loading starships")
 				}).then(
 					responseAsjson => {
-						// console.log("aqui esta responseAsjson de starships", responseAsjson)
 						setStore({starships:responseAsjson.results})
 						setStore({starshipshome:responseAsjson.results.filter((e) => e.uid < 10)})
 					}
@@ -94,15 +94,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 				fetch(
 					`https://www.swapi.tech/api/planets/`.concat(uid)
 				).then(response => {
-					console.log("aqui esta response de getPlanetsByuid", response)
 					if(response.ok){
 						return response.json()
 					}
 					throw new Error ("Fail loading getPlanetByuid")
 				}).then(responseAsjson=>{
-					console.log("aqui esta getby ide planets", responseAsjson.result.properties)
+
 					setStore({planetdetails:[responseAsjson.result.properties]})
-					console.log("details enflux",getStore().planetdetails)
 				}
 				).catch(errorGetPlanetById => {
 					console.error(errorGetPlanetById.message)
@@ -118,9 +116,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						}
 						throw new Error ("Fail loading starships")
 					}).then(responseAsjson=>{
-						console.log("aqui esta getby ide starships", responseAsjson.result.properties)
 						setStore({starshipsDetails:[responseAsjson.result.properties]})
-						console.log("details enflux",getStore().starshipsDetails)
 					}).catch(errorStarshipsDetails=>{
 						console.error (errorStarshipsDetails.message)
 					})
@@ -133,15 +129,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 				fetch(
 					`https://www.swapi.tech/api/people/`.concat(uid)
 				).then(response => {
-					console.log("aqui esta response de getPeopleByUid", response)
 					if(response.ok){
 						return response.json()
 					}
 					throw new Error ("Fail loading getPeopleByUid")
 				}).then(responseAsjson=>{
-					console.log("aqui esta getby ide people", responseAsjson.result.properties)
 					setStore({peopledetails:[responseAsjson.result.properties]})
-					console.log("details enflux",getStore().peopledetails)
 				}
 				).catch(errorGetPeopleById => {
 					console.error(errorGetPeopleById.message)

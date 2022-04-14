@@ -1,24 +1,17 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext,  useState } from "react";
 import PropTypes from "prop-types";
 import "../../styles/home.css";
-import CardPlanets from "../component/cardPlanets.js"
-import CardStarships from "../component/cardStarships.js"
-import CardPeople from "../component/cardPeople.js"
+import Card from "../component/Card.js"
+
 import { Context } from "../store/appContext";
 
 
 export const Home = () => {
 
 	const {store,actions} = useContext(Context);
-	const [favlist, setFavlist] = useState([]);
 	
-
-
 	 
-	 const favorites = (name) => {
-		setFavlist([...favlist, name])
-	};
-	 
+
 		
 return(
 	<div className="Container-fluid">
@@ -32,10 +25,11 @@ return(
 				{store.peoplehome.map((people, index)=> {
 					return(
 						<div className="col-md-3 d-flex justify-content-center" key={index}>
-							<CardPeople 
+							<Card 
 							title={people.name} 
 							uid={people.uid}
-							fav={()=>{favorites(people.name)}}
+							fav={()=>{actions.favorites(people.name)}}
+							rute={"/detailspeople/".concat(people.uid)}
 							/>
 						</div>	
 					)
@@ -43,14 +37,28 @@ return(
 				<h2>Naves</h2>
         {store.starshipshome.map((starships, index)=> {
 				return(
-					<div className="col-md-3 d-flex justify-content-center" key={index}><CardStarships uid={starships.uid} title={starships.name}/></div>	
+					<div className="col-md-3 d-flex justify-content-center" key={index}>
+						<Card 
+							title={starships.name} 
+							uid={starships.uid}
+							fav={()=>{actions.favorites(starships.name)}}
+							rute={"/detailsstarships/".concat(starships.uid)}
+							/>
+					</div>
 				)
 			})}
 				<h2>Planetas</h2>
       
       			{store.planetshome.map((planets, index)=> {
 				return(
-					<div className="col-md-3 d-flex justify-content-center" key={index}><CardPlanets uid={planets.uid} title={planets.name}/></div>	
+					<div className="col-md-3 d-flex justify-content-center" key={index}>
+						<Card 
+							title={planets.name} 
+							uid={planets.uid}
+							fav={()=>{actions.favorites(planets.name)}}
+							rute={"/detailsplanets/".concat(planets.uid)}
+							/>
+					</div>	
 				)
 			})}
 			</div>

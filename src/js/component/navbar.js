@@ -1,9 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
+
 import { Link } from "react-router-dom";
 import "../../styles/navbar.css";
-import corazon from "../../img/corazon.png";
+
+
+import { Context } from "../store/appContext";
 
 export const Navbar = () => {
+
+	const {store,actions} = useContext(Context);
+
+
   return (
     <nav className="navbar navbar-light mb-3" id="fondoNavbar">
       <Link to="/">
@@ -14,7 +21,7 @@ export const Navbar = () => {
           id="logoNavbar"
         />
       </Link>
-      <div className="ml-auto">
+      <div>
         <div className="dropdown">
           <button
             className="btn btn-secondary dropdown-toggle"
@@ -26,23 +33,17 @@ export const Navbar = () => {
            Favoritos
           </button>
           <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-            <li className="favs_navbar">Action</li>
-            <li className="favs_navbar">Another action</li>
-            <li className="favs_navbar">Something else here</li>
-          </ul>
+             {store.favlist.map((fav, index)=>{
+              return(
+                <li key={index} className="favs_navbar">{fav}</li>
+              )
+            })} 
+            </ul>
         </div>
       </div>
     </nav>
   );
 };
 {
-  /* <div className="listaFav">
-						<ul className="listaFav">
-							<li className="listaFav"><h2>hola</h2></li>
-							<li className="listaFav"><h2>hola</h2></li>
-							<li className="listaFav"><h2>hola</h2></li>
-							<li className="listaFav"><h2>hola</h2></li>
-							<li className="listaFav"><h2>hola</h2></li>
-						</ul>			
-					</div>	 */
+
 }

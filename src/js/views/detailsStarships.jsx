@@ -10,7 +10,6 @@ export  const DetailsStarships = () => {
 
     let params = useParams();
     
-    console.log("aqui esta params uid", params.uid)
     
     useEffect( ()=> {
         actions.getStarshipsById(params.uid)
@@ -32,11 +31,10 @@ return(
                     </div>
                     <div className="col-xl-5 Starshipsdescription">
                         <ul>
+                            <li>Nombre: {detail.name}</li>
                             <li>Tipo de nave: {detail.starship_class}</li>
-                            <li>Modelo de nave: {detail.model}</li>
                             <li>Manufactura: {detail.manufacturer}</li>
                             <li>Costo en créditos: {detail.cost_in_credits}</li>
-                    
                         </ul>
                     </div>
                 </div>
