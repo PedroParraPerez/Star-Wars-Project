@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import "../../styles/home.css";
+import CardStarships from "../component/cardStarships.js"
 import CardPeople from "../component/cardPeople.js"
 import { Context } from "../store/appContext";
 
@@ -11,9 +12,11 @@ export const Home = () => {
 	const [isFav, setIsFav] = useState(false);
 	const [listFav, setListFav] = ([]);
 
+
 	 const favorites = (uid) => {
 		isFav == false ? setIsFav(true) : setIsFav(false);
 		console.log(isFav)
+
 		
 	 }
 
@@ -44,6 +47,11 @@ return(
 						</div>	
 					)
 				})}
+        {store.starshipshome.map((starships, index)=> {
+				return(
+					<div className="col-md-3 d-flex justify-content-center" key={index}><CardStarships uid={starships.uid} title={starships.name}/></div>	
+				)
+			})}
 			</div>
 		</div>
 	</div>
