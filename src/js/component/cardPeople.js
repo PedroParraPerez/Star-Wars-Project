@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Link, useParams, useState, useEffect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import corazon from "../../img/corazon.png"
 const CardPeople = (props) => {
   

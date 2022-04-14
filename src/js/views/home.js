@@ -10,20 +10,14 @@ import { Context } from "../store/appContext";
 export const Home = () => {
 
 	const {store,actions} = useContext(Context);
-	const [isFav, setIsFav] = useState(false);
-	const [listFav, setListFav] = ([]);
+	const [favlist, setFavlist] = useState([]);
+	
 
 
-	 const favorites = (uid) => {
-		isFav == false ? setIsFav(true) : setIsFav(false);
-		console.log(isFav)
-
-		
-	 }
-
-	const addToFav = () => {
-		setListFav
-	}
+	 
+	 const favorites = (name) => {
+		setFavlist([...favlist, name])
+	};
 	 
 		
 return(
@@ -41,7 +35,7 @@ return(
 							<CardPeople 
 							title={people.name} 
 							uid={people.uid}
-							fav={()=>{favorites()}}
+							fav={()=>{favorites(people.name)}}
 							/>
 						</div>	
 					)
