@@ -9,8 +9,14 @@ import { Context } from "../store/appContext";
 export const Home = () => {
 
 	const {store,actions} = useContext(Context);
+	const [dele, setDele] = useState();
+
+
 	
-	 
+	 const deleteall = () => {
+		setDele(store.favlist)
+		console.log(dele)
+	 }
 
 		
 return(
@@ -20,7 +26,7 @@ return(
 				<img  className="imgHeader" src="https://media.discordapp.net/attachments/939128267607257158/940244671056211968/Ilustracion_sin_titulo.jpg" alt="StarWars"/>
 			</div>
 			
-			<h2>Personajes</h2>
+			<h2 onClick={deleteall}>Personajes</h2>
 			<div className="row cardlistpeople">
 				{store.peoplehome.map((people, index)=> {
 					return(

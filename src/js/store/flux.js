@@ -11,7 +11,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			planetdetails:[],
       		peopledetails:[],
 			starshipsDetails:[],
-			favlist:[],
+			fav:[],
 
 		},
 
@@ -26,9 +26,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				/**	fetch().then().then(data => setStore({ "foo": data.bar }))*/
 			favorites: (name) => {
-					//  setStore({ ...getStore().favlist, favlist: name })
-					 setStore({ favlist: [name] })
-					 console.log(getStore().favlist)
+					//  setStore({ ...getStore().fav, fav: name })
+					 setStore({ fav: [name] })
+					
 					
 				},
 // ----------------------------------- DATA DE LOS PLANETAS -----------------------------------	

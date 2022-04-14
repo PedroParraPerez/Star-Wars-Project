@@ -1,6 +1,7 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 import { Link } from "react-router-dom";
+import {  } from "react/cjs/react.production.min";
 import "../../styles/navbar.css";
 
 
@@ -9,6 +10,16 @@ import { Context } from "../store/appContext";
 export const Navbar = () => {
 
 	const {store,actions} = useContext(Context);
+	const [favlist, setFavlist] = useState([]);
+
+
+	useEffect(()=>{
+    setFavlist([...favlist, store.fav])
+  },[store.fav])
+
+		
+		
+	 
 
 
   return (
@@ -33,11 +44,11 @@ export const Navbar = () => {
            Favoritos
           </button>
           <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-             {store.favlist.map((fav, index)=>{
+             {favlist ? favlist.map((fav, index)=>{
               return(
-                <li key={index} className="favs_navbar">{fav}</li>
+                <li key={index} className="favs_navbar p-2">{fav}</li>
               )
-            })} 
+            }) : ""} 
             </ul>
         </div>
       </div>
