@@ -17,9 +17,10 @@
     justify-content: center;
     
 }
-h1{
+h2{
+
     color: white;
-    margin-top: 2rem;
+    margin-top: 15rem;
     border-bottom: 1pt solid rgb(190, 179, 19);
 }
 .img-header{
