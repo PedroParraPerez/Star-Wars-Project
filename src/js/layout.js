@@ -14,6 +14,9 @@ import {DetailsPeople} from "./views/detailsPeople.jsx";
 // import { DetailsPlanets } from "./views/detailsPlanets";
 import {DetailsStarships} from "./views/detailsStarships.jsx";
 
+import { DetailsPlanets } from "./views/detailsPlanets.jsx";
+
+
 //create your first component
 const Layout = () => {
 	//the basename is used when your project is published in a subdirectory and not in the root of the domain
@@ -40,6 +43,9 @@ const Layout = () => {
 						</Route> */}
 						<Route exact path ="/detailsStarships/:uid">
 							<DetailsStarships />
+						</Route>
+						<Route exact path ="/detailsplanets/:uid">
+							<DetailsPlanets />
 						</Route>
 						<Route>
 							<h1>Not found!</h1>

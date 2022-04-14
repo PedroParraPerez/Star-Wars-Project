@@ -8,8 +8,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 			peoplehome:[],
 			starships:[],
 			starshipshome:[],
+			planetdetails:[],
       peopledetails:[],
 			starshipsDetails:[]
+
 		},
 
 
@@ -20,7 +22,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 			
 	
 		actions: {
-		
 
 				/**	fetch().then().then(data => setStore({ "foo": data.bar }))*/
 				
@@ -86,6 +87,28 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.error(errorstarships.message)
 				})
 			},
+
+		
+
+			getPlanetsById: (uid) => {
+				fetch(
+					`https://www.swapi.tech/api/planets/`.concat(uid)
+				).then(response => {
+					console.log("aqui esta response de getPlanetsByuid", response)
+					if(response.ok){
+						return response.json()
+					}
+					throw new Error ("Fail loading getPlanetByuid")
+				}).then(responseAsjson=>{
+					console.log("aqui esta getby ide planets", responseAsjson.result.properties)
+					setStore({planetdetails:[responseAsjson.result.properties]})
+					console.log("details enflux",getStore().planetdetails)
+				}
+				).catch(errorGetPlanetById => {
+					console.error(errorGetPlanetById.message)
+				})
+			},
+
 			getStarshipsById: (uid) => {
 				
 					fetch("https://www.swapi.tech/api/starships/"+uid
@@ -124,11 +147,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.error(errorGetPeopleById.message)
 				})
 			},
-
-
-
-			
-
 		}
 		};
 };
@@ -136,3 +154,4 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 
 export default getState;
+
