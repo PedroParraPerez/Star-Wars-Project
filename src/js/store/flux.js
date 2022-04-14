@@ -1,34 +1,27 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			demo: [
-				{
-					title: "FIRST",
-					background: "white",
-					initial: "white"
-				},
-				{
-					title: "SECOND",
-					background: "white",
-					initial: "white"
-				}
-			],
+
 			planets:[],
 			planetshome:[],
 			people:[],
 			peoplehome:[],
 			starships:[],
 			starshipshome:[],
+      peopledetails:[],
 			starshipsDetails:[]
 		},
-		actions: {
-			// Use getActions to call a function within a fuction
-			exampleFunction: () => {
-				getActions().changeColor(0, "green");
-			},
+
+
 
 
 	
+
+			
+		},
+		actions: {
+		
+
 				/**	fetch().then().then(data => setStore({ "foo": data.bar }))*/
 				
 // ----------------------------------- DATA DE LOS PLANETAS -----------------------------------	
@@ -36,9 +29,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				fetch(
 					"https://www.swapi.tech/api/planets/"
-					//  process.env.DATAPLANETS
 					).then(response => {
-					// console.log("aqui esta response de planets", response)
+					console.log("aqui esta response de planets", response)
 					if(response.ok){
 						return response.json()
 					}
@@ -111,8 +103,36 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 			},
 
+
+
+//----------------------------------------GET PEOPLE BY UID------------------------------------------------------
+			getPeopleById: (uid) => {
+				fetch(
+					`https://www.swapi.tech/api/people/`.concat(uid)
+				).then(response => {
+					console.log("aqui esta response de getPeopleByUid", response)
+					if(response.ok){
+						return response.json()
+					}
+					throw new Error ("Fail loading getPeopleByUid")
+				}).then(responseAsjson=>{
+					console.log("aqui esta getby ide people", responseAsjson.result.properties)
+					setStore({peopledetails:[responseAsjson.result.properties]})
+					console.log("details enflux",getStore().peopledetails)
+				}
+				).catch(errorGetPeopleById => {
+					console.error(errorGetPeopleById.message)
+				})
+			},
+
+
+
+			
+
 		}
-	};
+		};
 };
+
+
 
 export default getState;
