@@ -1,17 +1,66 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
+
 import { Link } from "react-router-dom";
+import {  } from "react/cjs/react.production.min";
+import "../../styles/navbar.css";
+
+
+import { Context } from "../store/appContext";
 
 export const Navbar = () => {
-	return (
-		<nav className="navbar navbar-light bg-light mb-3">
-			<Link to="/">
-				<span className="navbar-brand mb-0 h1">React Boilerplate</span>
-			</Link>
-			<div className="ml-auto">
-				<Link to="/demo">
-					<button className="btn btn-primary">Check the Context in action</button>
-				</Link>
-			</div>
-		</nav>
-	);
+
+	const {store,actions} = useContext(Context);
+	const [favlist, setFavlist] = useState([]);
+
+	
+	useEffect(()=>{
+		
+    setFavlist([...favlist, store.fav])
+  },[store.fav])
+
+  const deleteFav = (index) => {
+	let tmp = favlist;
+	favlist.splice(index, 1);
+	setFavlist([...tmp]);
+  }
+		
+		
+	 
+
+
+  return (
+    <nav className="navbar navbar-light mb-3" id="fondoNavbar">
+      <Link to="/">
+        <img
+          className="navbar-brand mb-0 h1"
+          src="https://www.seekpng.com/png/full/10-105590_star-wars-logo-png-star-wars-png.png"
+          alt="logo Star Wars Blog"
+          id="logoNavbar"
+        />
+      </Link>
+      <div>
+        <div className="dropdown">
+          <button
+            className="btn btn-secondary dropdown-toggle"
+            type="button"
+            id="dropdownMenuButton1"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+           Favoritos
+          </button>
+          <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+             {favlist ? favlist.map((fav, index)=>{
+              return(
+                fav.length > 0  ? <li key={index} className="favs_navbar p-2 d-flex justify-content-between">{fav}<span onClick={()=>{deleteFav(index)}} className="garbage">🗑️</span></li> : ""
+              )
+            }) : ""} 
+            </ul>
+        </div>
+      </div>
+    </nav>
+  );
 };
+{
+
+}

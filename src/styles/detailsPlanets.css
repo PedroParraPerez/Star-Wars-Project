@@ -1,0 +1,28 @@
+.wrapplanets{
+    background-image: radial-gradient( circle farthest-corner at 10% 20%,  #5a5c6a 0%, rgba(32,45,58,1) 81.3% );;
+    display: flex;
+    border-radius: 2rem;
+    width: 60rem;
+    margin:auto;
+    margin-top: 10rem;
+    margin-bottom: 10rem;   
+    list-style: none !important;
+    font-size: 2rem;
+    color: white;
+}
+.planetsphoto{
+    height: 95%;
+    border-radius: 2rem;
+    display:flex;
+  justify-content: center;
+  align-items: center;
+}
+.planetsbucketimg{
+    display: flex;
+    align-items: center;
+}
+
+.planetsdescription{
+    align-items: center;
+    padding-top: 20px;
+}
