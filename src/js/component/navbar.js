@@ -1,9 +1,33 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
+
 import { Link } from "react-router-dom";
+import {  } from "react/cjs/react.production.min";
 import "../../styles/navbar.css";
-import corazon from "../../img/corazon.png";
+
+
+import { Context } from "../store/appContext";
 
 export const Navbar = () => {
+
+	const {store,actions} = useContext(Context);
+	const [favlist, setFavlist] = useState([]);
+
+	
+	useEffect(()=>{
+		
+    setFavlist([...favlist, store.fav])
+  },[store.fav])
+
+  const deleteFav = (index) => {
+	let tmp = favlist;
+	favlist.splice(index, 1);
+	setFavlist([...tmp]);
+  }
+		
+		
+	 
+
+
   return (
     <nav className="navbar navbar-light mb-3" id="fondoNavbar">
       <Link to="/">
@@ -14,7 +38,7 @@ export const Navbar = () => {
           id="logoNavbar"
         />
       </Link>
-      <div className="ml-auto">
+      <div>
         <div className="dropdown">
           <button
             className="btn btn-secondary dropdown-toggle"
@@ -26,23 +50,17 @@ export const Navbar = () => {
            Favoritos
           </button>
           <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-            <li className="favs_navbar">Action</li>
-            <li className="favs_navbar">Another action</li>
-            <li className="favs_navbar">Something else here</li>
-          </ul>
+             {favlist ? favlist.map((fav, index)=>{
+              return(
+                fav.length > 0  ? <li key={index} className="favs_navbar p-2 d-flex justify-content-between">{fav}<span onClick={()=>{deleteFav(index)}} className="garbage">🗑️</span></li> : ""
+              )
+            }) : ""} 
+            </ul>
         </div>
       </div>
     </nav>
   );
 };
 {
-  /* <div className="listaFav">
-						<ul className="listaFav">
-							<li className="listaFav"><h2>hola</h2></li>
-							<li className="listaFav"><h2>hola</h2></li>
-							<li className="listaFav"><h2>hola</h2></li>
-							<li className="listaFav"><h2>hola</h2></li>
-							<li className="listaFav"><h2>hola</h2></li>
-						</ul>			
-					</div>	 */
+
 }
