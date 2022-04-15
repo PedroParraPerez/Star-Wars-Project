@@ -12,8 +12,9 @@ export const Navbar = () => {
 	const {store,actions} = useContext(Context);
 	const [favlist, setFavlist] = useState([]);
 
-
+	
 	useEffect(()=>{
+		
     setFavlist([...favlist, store.fav])
   },[store.fav])
 
@@ -46,7 +47,7 @@ export const Navbar = () => {
           <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
              {favlist ? favlist.map((fav, index)=>{
               return(
-                <li key={index} className="favs_navbar p-2">{fav}</li>
+                fav.length > 0  ? <li key={index} className="favs_navbar p-2 d-flex justify-content-between">{fav}<span className="garbage">🗑️</span></li> : ""
               )
             }) : ""} 
             </ul>
