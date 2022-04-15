@@ -18,6 +18,11 @@ export const Navbar = () => {
     setFavlist([...favlist, store.fav])
   },[store.fav])
 
+  const deleteFav = (index) => {
+	let tmp = favlist;
+	favlist.splice(index, 1);
+	setFavlist([...tmp]);
+  }
 		
 		
 	 
@@ -47,7 +52,7 @@ export const Navbar = () => {
           <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
              {favlist ? favlist.map((fav, index)=>{
               return(
-                fav.length > 0  ? <li key={index} className="favs_navbar p-2 d-flex justify-content-between">{fav}<span className="garbage">🗑️</span></li> : ""
+                fav.length > 0  ? <li key={index} className="favs_navbar p-2 d-flex justify-content-between">{fav}<span onClick={()=>{deleteFav(index)}} className="garbage">🗑️</span></li> : ""
               )
             }) : ""} 
             </ul>
