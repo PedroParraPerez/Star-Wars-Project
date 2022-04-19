@@ -1,7 +1,8 @@
 ![4Geeks Logo](https://4geeksacademy.com//images/4geeks-logo.png)
 # Proyecto Star Wars React
 ## Owners:
-### 	- Pedro Parra
+### 	- Pedro Parra 
+###     - Sofia Romero
 ### 	
 ## ¿En que consiste el proyecto?
 En este proyecto de React, apartir del uso de JS, HTML y CSS he construido el clásico un blog de STAR WARS en el que poder divisar los diferentes personajes, naves y planetas asi como las caracteristicas de cada uno de nuestra peliculas intergalácticas favoritas.
